@@ -33,19 +33,16 @@ def add_expense(context, amount, title):
         title=title, amount=amount, description="", expense_date=date.today()
     )
 
+
 @when(parsers.parse("actualizo el gasto a {amount:d} euros con id {expense_id:d}"))
 def update_expense_amount(context, amount, expense_id):
-    context["service"].update_expense(
-        expense_id=expense_id,
-        amount=amount
-    )
+    context["service"].update_expense(expense_id=expense_id, amount=amount)
+
 
 @when(parsers.parse("actualizo el gasto con id {expense_id:d} con el titulo {title}"))
 def update_expense_title(context, title, expense_id):
-    context["service"].update_expense(
-        expense_id=expense_id,
-        title=title
-    )
+    context["service"].update_expense(expense_id=expense_id, title=title)
+
 
 @when(parsers.parse("elimino el gasto con id {expense_id:d}"))
 def remove_expense(context, expense_id):
@@ -62,7 +59,8 @@ def check_expenses_length(context, expenses):
     total = len(context["db"]._expenses)
     assert expenses == total
 
+
 @then(parsers.parse("el gasto con id {expense_id:d} debe llamarse {title}"))
 def check_expense_title(context, expense_id, title):
-    expense = context["db"]._expenses[expense_id-1]
+    expense = context["db"]._expenses[expense_id - 1]
     assert expense.title == title

@@ -45,5 +45,5 @@ def test_future_date_raises_error():
             title="Television",
             amount=5,
             description="Electronica",
-            expense_date=date.today() + + timedelta(days=1),
+            expense_date=date.today() + +timedelta(days=1),
         )
