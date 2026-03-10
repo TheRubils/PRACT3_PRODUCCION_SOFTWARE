@@ -24,8 +24,8 @@ jobs:
       - name: Install dependencies
         run: uv sync
 
-      - name: Install ruff and mypy
-        run: pip install ruff mypy pytest
+      - name: Install tools
+        run: pip install ruff mypy pytest pytest-bdd
 
       - name: Ruff format
         run: python3 -m ruff format . --check
