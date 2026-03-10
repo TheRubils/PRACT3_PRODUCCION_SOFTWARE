@@ -25,7 +25,7 @@ jobs:
         run: uv sync
 
       - name: Install ruff and mypy
-        run: uv pip install ruff mypy pytest
+        run: pip install ruff mypy pytest
 
       - name: Ruff format
         run: python3 -m ruff format . --check
